@@ -1,0 +1,17 @@
+:def centip3de - Really really cool
+:Like super cool
+
+:def Math - A dumb thing that dumb people made
+::i Really :i dumb people
+
+:sec Example of recursion
+
+code:
+def recurse(person)
+if(person == is_cool):
+    recurse(person)
+return
+:code
+
+:def Programming - Cool shit
+
