@@ -1,0 +1,7 @@
+.git
+.project
+.DS_Store
+*.swp
+__pycache__
+.project 
+.pydevproject 
