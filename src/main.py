@@ -1,20 +1,20 @@
+import re
 import sys
-import translator
-from parse import Parser
 
 def main():
-""" Get's the first CLI argument, passes it to the parser, 
-    parses it, turns it into tokens and translates the tokens. """
+    """ Get's the first CLI argument, regex substitution magic, done."""
 
     arg = sys.argv[1]
-    parser = Parser(arg)
-    parser.parse()
-    tokens = parser.get_constructed()
-    foo = translator.translate(tokens)
+    file = open(arg, "r")
+    text = file.read()
 
-    #Print the output
-    print(foo)
-
+    text = re.sub(r'(:def) (\w+)', r'* ** \2 **', text)
+    text = re.sub(r':code', r'```', text)
+    text = re.sub(r'(:i) (\w+) (:i)', r'*\2*', text)
+    text = re.sub(r'(:b) (\w+) (:b)', r'** \2 **', text)
+    text = re.sub(r'(:sec) (.*)(\n)', r'\2\n---', text, flags=re.MULTILINE)
+    text = re.sub(r'(:)(\w|\*)', r'\t* \2', text)
+    print(text)
 
 if __name__ == "__main__":
     main()
